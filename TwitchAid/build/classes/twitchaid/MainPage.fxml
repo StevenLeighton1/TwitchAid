@@ -38,6 +38,11 @@
       </SplitPane>
       <VBox prefHeight="496.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
          <children>
+            <Button fx:id="previewStreamButton" alignment="CENTER" mnemonicParsing="false" onAction="#openStream" text="Preview Stream">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="150.0" top="10.0" />
+               </VBox.margin>
+            </Button>
             <ListView fx:id="followList" prefHeight="479.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>

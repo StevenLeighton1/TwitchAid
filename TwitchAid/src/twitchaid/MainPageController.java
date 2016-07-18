@@ -19,6 +19,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import org.json.*;
 
 /**
@@ -33,11 +41,14 @@ public class MainPageController implements Initializable {
     private final String CLIENT_ID = "7rqjd7m4p60rwrbgy6j1kibaxmzmmen";
     
     public String token;
+    public String username;
     
     @FXML
     private Label welcomeLabel;
     @FXML
     private ListView<?> followList;
+    @FXML
+    private Button previewStreamButton;
 
     /**
      * Initializes the controller class.
@@ -103,6 +114,34 @@ public class MainPageController implements Initializable {
 
 		//print result
 		System.out.println(jsonString);
+                
+                //set welcome label to user's display name
+                welcomeLabel.setText("Welcome " + objJson.getString("display_name") + "!");
+                
+                //get username saved
+                username = objJson.getString("name");
 	}
+
+    @FXML
+    private void openStream(ActionEvent event) {
+        
+        Stage stage = new Stage();
+        VBox root = new VBox();
+        Scene scene = new Scene(root); //use root for above parent
+        stage.setTitle(username);   //set title
+        
+        WebView browser = new WebView();
+        WebEngine webEngine = browser.getEngine();
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(browser);
+    
+        webEngine.load("https://twitch.tv/" + username);
+        
+        root.getChildren().add(browser);
+
+        scene.setRoot(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     
 }
