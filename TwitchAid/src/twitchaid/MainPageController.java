@@ -49,6 +49,8 @@ public class MainPageController implements Initializable {
     private ListView<?> followList;
     @FXML
     private Button previewStreamButton;
+    @FXML
+    private Button openChatButton;
 
     /**
      * Initializes the controller class.
@@ -135,7 +137,31 @@ public class MainPageController implements Initializable {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(browser);
     
+        // option 1 (stream+chat): 
         webEngine.load("https://twitch.tv/" + username);
+        
+        // option 2 (just stream): webEngine.load("https://player.twitch.tv/?channel=" + username);
+        root.getChildren().add(browser);
+
+        scene.setRoot(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void openChat(ActionEvent event) {
+        
+        Stage stage = new Stage();
+        VBox root = new VBox();
+        Scene scene = new Scene(root); //use root for above parent
+        stage.setTitle(username);   //set title
+        
+        WebView browser = new WebView();
+        WebEngine webEngine = browser.getEngine();
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(browser);
+   
+        webEngine.load("https://www.twitch.tv/" + username + "/chat");
         
         root.getChildren().add(browser);
 

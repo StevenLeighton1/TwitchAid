@@ -43,6 +43,11 @@
                   <Insets bottom="10.0" left="150.0" top="10.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="openChatButton" alignment="CENTER" layoutX="160.0" layoutY="20.0" mnemonicParsing="false" onAction="#openChat" text="Open Chat">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="162.5" top="10.0" />
+               </VBox.margin>
+            </Button>
             <ListView fx:id="followList" prefHeight="479.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
