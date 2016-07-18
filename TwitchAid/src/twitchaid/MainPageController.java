@@ -51,6 +51,8 @@ public class MainPageController implements Initializable {
     private Button previewStreamButton;
     @FXML
     private Button openChatButton;
+    @FXML
+    private Button openEditInfoButton;
 
     /**
      * Initializes the controller class.
@@ -93,11 +95,12 @@ public class MainPageController implements Initializable {
 
 		//add request headers
 		con.setRequestProperty("User-Agent", USER_AGENT);
+                con.setRequestProperty("Client-ID", CLIENT_ID);
 		con.setRequestProperty("Accept", ACCEPT);
                 con.setRequestProperty("Authorization", "OAuth " + token);
 
 		int responseCode = con.getResponseCode();
-		System.out.println("\nSending 'GET' request to URL : " + url);
+		System.out.println("\nSending request");
 		System.out.println("Response Code : " + responseCode);
 
 		BufferedReader in = new BufferedReader(
@@ -130,7 +133,7 @@ public class MainPageController implements Initializable {
         Stage stage = new Stage();
         VBox root = new VBox();
         Scene scene = new Scene(root); //use root for above parent
-        stage.setTitle(username);   //set title
+        stage.setTitle(username + " Preview");   //set title
         
         WebView browser = new WebView();
         WebEngine webEngine = browser.getEngine();
@@ -154,7 +157,7 @@ public class MainPageController implements Initializable {
         Stage stage = new Stage();
         VBox root = new VBox();
         Scene scene = new Scene(root); //use root for above parent
-        stage.setTitle(username);   //set title
+        stage.setTitle(username + " Chat");   //set title
         
         WebView browser = new WebView();
         WebEngine webEngine = browser.getEngine();
@@ -164,10 +167,37 @@ public class MainPageController implements Initializable {
         webEngine.load("https://www.twitch.tv/" + username + "/chat");
         
         root.getChildren().add(browser);
-
+        
         scene.setRoot(root);
+        stage.setWidth(400);
+        stage.setHeight(600);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void openEditInfo(ActionEvent event) {
+        
+        Stage stage = new Stage();
+        VBox root = new VBox();
+        Scene scene = new Scene(root); //use root for above parent
+        stage.setTitle(username + " Info");   //set title
+        
+        WebView browser = new WebView();
+        WebEngine webEngine = browser.getEngine();
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(browser);
+   
+        webEngine.load("https://www.twitch.tv/" + username + "/dashboard");
+        
+        root.getChildren().add(browser);
+        
+        scene.setRoot(root);
+        stage.setWidth(650);
+        stage.setHeight(570);
+        stage.setScene(scene);
+        stage.show();
+        
     }
     
 }
