@@ -58,7 +58,7 @@ public class TwitchAid extends Application {
         webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
             @Override
             public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
-                if (Worker.State.SUCCEEDED.equals(newValue)) {
+                
                     String url = webEngine.getLocation(); //get current URL
                     System.out.println(url);
                     
@@ -96,7 +96,7 @@ public class TwitchAid extends Application {
                     }
                     System.out.println("token = " + token);
                 }
-            }
+            
         });
 
         root.getChildren().add(browser);
