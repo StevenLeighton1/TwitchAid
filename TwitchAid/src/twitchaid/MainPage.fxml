@@ -38,11 +38,21 @@
       </SplitPane>
       <VBox prefHeight="496.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label text="List of Follows">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
+            <Button fx:id="previewStreamButton" alignment="CENTER" mnemonicParsing="false" onAction="#openStream" text="Preview Stream">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="150.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="openChatButton" alignment="CENTER" layoutX="160.0" layoutY="20.0" mnemonicParsing="false" onAction="#openChat" text="Open Chat">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="162.5" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="openEditInfoButton" alignment="CENTER" layoutX="173.0" layoutY="65.0" mnemonicParsing="false" onAction="#openEditInfo" text="Edit Stream Info">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="150.0" top="10.0" />
+               </VBox.margin>
+            </Button>
             <ListView fx:id="followList" prefHeight="479.0" prefWidth="400.0" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>

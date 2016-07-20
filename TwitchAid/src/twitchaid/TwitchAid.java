@@ -52,13 +52,13 @@ public class TwitchAid extends Application {
                 + "?response_type=token"
                 + "&client_id=" + clientID
                 + "&redirect_uri=http://127.0.0.1"
-                + "&scope=user_read");
+                + "&scope=user_read channel_editor");
         
         
         webEngine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
             @Override
             public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
-                if (Worker.State.SUCCEEDED.equals(newValue)) {
+                
                     String url = webEngine.getLocation(); //get current URL
                     System.out.println(url);
                     
@@ -96,7 +96,7 @@ public class TwitchAid extends Application {
                     }
                     System.out.println("token = " + token);
                 }
-            }
+            
         });
 
         root.getChildren().add(browser);
