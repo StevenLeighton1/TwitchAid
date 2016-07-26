@@ -15,6 +15,7 @@ import javafx.concurrent.Worker;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -74,17 +75,17 @@ public class TwitchAid extends Application {
                                 root.getChildren().remove(browser);
                                 
                                 //create new loader/root for main page
-                                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainPage.fxml"));
-                                VBox logRoot = fxmlLoader.load();
+                                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TwitchAid_Land.fxml"));
+                                HBox logRoot = fxmlLoader.load();
                                 
                                 //grab controller for main page and set access token
-                                MainPageController mainController = (MainPageController) fxmlLoader.getController();
+                                TwitchAid_LandController mainController = (TwitchAid_LandController) fxmlLoader.getController();
                                 mainController.setToken(token);
                                 
                                 //set new root
                                 scene.setRoot(logRoot);
-                                stage.setWidth(400);
-                                stage.setHeight(600);
+                                stage.setWidth(625);
+                                stage.setHeight(425);
                                 
                                 //start main page
                                 mainController.start();

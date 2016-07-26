@@ -8,9 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="TwitchAid.jar" size="10251" download="eager" />
-    <jar href="lib\json-20160212.jar" size="49176" download="eager" />
+    <jar href="TwitchAid.jar" size="17391" download="eager" />
+    <jar href="lib\json-20160212.jar" size="52152" download="eager" />
   </resources>
+<security>
+  <all-permissions/>
+</security>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="TwitchAid" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
